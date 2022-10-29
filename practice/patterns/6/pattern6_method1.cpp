@@ -6,20 +6,22 @@ int main()
     int n;
     cout << "Enter n: ";
     cin >> n;
+    cout << endl;
 
-    int i = 1;
-    while (i <= n)
+    int i = 0;
+    char c = 'A';
+    while (i < n)
     {
-        int j = 1;
-        int count = i;
-        while (j <= i)
+
+        int j = 0;
+        while (j < n)
         {
-            cout << count << " ";
+            cout << c << " ";
             j++;
-            count--;
         }
-        cout << endl;
+        c++;
         i++;
+        cout << endl;
     }
 
     return 0;

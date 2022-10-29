@@ -9,19 +9,19 @@ int main()
     cout << endl;
 
     int i = 1;
-    int count = 1;
-
     while (i <= n)
     {
         int j = 1;
+        int count = i;
         while (j <= i)
         {
             cout << count << " ";
-            count++;
             j++;
+            count--;
         }
         cout << endl;
         i++;
     }
+
     return 0;
 }

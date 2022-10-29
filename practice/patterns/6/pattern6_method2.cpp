@@ -9,19 +9,18 @@ int main()
     cout << endl;
 
     int i = 1;
-    int count = 1;
-
     while (i <= n)
     {
         int j = 1;
-        while (j <= i)
+        while (j <= n)
         {
-            cout << count << " ";
-            count++;
+            char c = 'A' + i - 1;
+            cout << c << " ";
             j++;
         }
         cout << endl;
         i++;
     }
+
     return 0;
 }
