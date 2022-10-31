@@ -1,6 +1,11 @@
-.DS_Store
+# Ignore all
+*
 
-*/*             #ignore all files in each directory
-!*/*.cpp        #unignore .cpp files in each directory
-!*/*.md         #unignore .md files in each directory
-!.gitignore     #unignore .gitignore
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+.DS_Store
+!.gitignore
