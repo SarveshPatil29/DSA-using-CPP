@@ -11,8 +11,6 @@ public:
       if (s[i] == '(' || s[i] == '{' || s[i] == '[')
       {
         v.push_back(s[i]);
-        cout << "Pushed"
-             << " ";
       }
       else if (s[i] == ')')
       {
@@ -53,13 +51,9 @@ public:
         if (v.back() == '[')
         {
           v.pop_back();
-          cout << "POPED"
-               << " ";
         }
         else
         {
-          cout << "False"
-               << " ";
           return false;
         }
       }
