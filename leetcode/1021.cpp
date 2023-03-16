@@ -7,27 +7,65 @@ public:
   {
     int start = 0;
     string ans = "";
-    vector<int> stack;
+    int openBrackets = 0;
+    int closeBrackets = 0;
 
     for (int i = 0; i < s.length(); i++)
     {
       if (s[i] == '(')
       {
-        stack.push_back('(');
+        openBrackets++;
+        if (openBrackets != 1)
+        {
+          ans.push_back('(');
+        }
       }
       else
       {
-        stack.pop_back();
-        if (stack.size() == 0)
+        closeBrackets++;
+        if (closeBrackets == openBrackets)
         {
-          for (int j = start + 1; j < i; j++)
-          {
-            ans.push_back(s[j]);
-          }
-          start = i + 1;
+          openBrackets = 0;
+          closeBrackets = 0;
+        }
+        else
+        {
+          ans.push_back(')');
         }
       }
     }
     return ans;
   }
 };
+
+// class Solution
+// {
+// public:
+//   string removeOuterParentheses(string s)
+//   {
+//     int start = 0;
+//     string ans = "";
+//     vector<int> stack;
+
+//     for (int i = 0; i < s.length(); i++)
+//     {
+//       if (s[i] == '(')
+//       {
+//         stack.push_back('(');
+//       }
+//       else
+//       {
+//         stack.pop_back();
+//         if (stack.size() == 0)
+//         {
+//           for (int j = start + 1; j < i; j++)
+//           {
+//             ans.push_back(s[j]);
+//           }
+//           start = i + 1;
+//         }
+//       }
+//     }
+//     return ans;
+//   }
+// };
