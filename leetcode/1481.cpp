@@ -3,10 +3,6 @@
 class Solution
 {
 public:
-  static bool sortbysec(const pair<int, int> &a, const pair<int, int> &b)
-  {
-    return (a.second < b.second);
-  }
   int findLeastNumOfUniqueInts(vector<int> &arr, int k)
   {
     unordered_map<int, int> map;
@@ -16,25 +12,24 @@ public:
       map[arr[i]]++;
     }
 
-    vector<pair<int, int>> elements;
+    vector<int> freq;
 
     for (auto item : map)
     {
-      pair<int, int> temp{item.first, item.second};
-      elements.push_back(temp);
+      freq.push_back(item.second);
     }
 
-    sort(elements.begin(), elements.end(), sortbysec);
+    sort(freq.begin(), freq.end());
 
     int i = 0;
     int n = 0;
     while (k)
     {
-      if (elements[i].second > 0)
+      if (freq[i] > 0)
       {
-        elements[i].second -= 1;
+        freq[i] -= 1;
         k--;
-        if (elements[i].second == 0)
+        if (freq[i] == 0)
         {
           n++;
         }
@@ -45,6 +40,55 @@ public:
       }
     }
 
-    return elements.size() - n;
+    return freq.size() - n;
   }
 };
+
+// class Solution
+// {
+// public:
+//   static bool sortbysec(const pair<int, int> &a, const pair<int, int> &b)
+//   {
+//     return (a.second < b.second);
+//   }
+//   int findLeastNumOfUniqueInts(vector<int> &arr, int k)
+//   {
+//     unordered_map<int, int> map;
+
+//     for (int i = 0; i < arr.size(); i++)
+//     {
+//       map[arr[i]]++;
+//     }
+
+//     vector<pair<int, int>> elements;
+
+//     for (auto item : map)
+//     {
+//       pair<int, int> temp{item.first, item.second};
+//       elements.push_back(temp);
+//     }
+
+//     sort(elements.begin(), elements.end(), sortbysec);
+
+//     int i = 0;
+//     int n = 0;
+//     while (k)
+//     {
+//       if (elements[i].second > 0)
+//       {
+//         elements[i].second -= 1;
+//         k--;
+//         if (elements[i].second == 0)
+//         {
+//           n++;
+//         }
+//       }
+//       else
+//       {
+//         i++;
+//       }
+//     }
+
+//     return elements.size() - n;
+//   }
+// };
