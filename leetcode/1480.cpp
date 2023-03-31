@@ -3,13 +3,34 @@
 class Solution
 {
 public:
-  vector<int> runningSum(vector<int> &nums)
+  int numIdenticalPairs(vector<int> &nums)
   {
-    for (int i = 1; i < nums.size(); i++)
+    int ans = 0;
+    unordered_map<int, int> freq;
+    for (int i = 0; i < nums.size(); i++)
     {
-      nums[i] += nums[i - 1];
+      freq[nums[i]]++;
     }
 
-    return nums;
+    for (auto item : freq)
+    {
+      int count = item.second;
+      ans += count * (count - 1) / 2;
+    }
+
+    return ans;
   }
 };
+// class Solution
+// {
+// public:
+//   vector<int> runningSum(vector<int> &nums)
+//   {
+//     for (int i = 1; i < nums.size(); i++)
+//     {
+//       nums[i] += nums[i - 1];
+//     }
+
+//     return nums;
+//   }
+// };
