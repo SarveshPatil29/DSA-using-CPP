@@ -5,20 +5,20 @@ class Solution
 public:
   int partitionString(string s)
   {
-    unordered_map<int, int> freq;
+    set<int> elems;
     int ans = 0;
 
     for (int i = 0; i < s.length(); i++)
     {
-      if (freq.find(s[i]) == freq.end())
+      if (!elems.count(s[i]))
       {
-        freq[s[i]]++;
+        elems.insert(s[i]);
       }
       else
       {
         ans++;
-        freq.clear();
-        freq[s[i]]++;
+        elems.clear();
+        elems.insert(s[i]);
       }
     }
     ans++;
@@ -26,3 +26,30 @@ public:
     return ans;
   }
 };
+
+// class Solution
+// {
+// public:
+//   int partitionString(string s)
+//   {
+//     unordered_map<int, int> freq;
+//     int ans = 0;
+
+//     for (int i = 0; i < s.length(); i++)
+//     {
+//       if (freq.find(s[i]) == freq.end())
+//       {
+//         freq[s[i]]++;
+//       }
+//       else
+//       {
+//         ans++;
+//         freq.clear();
+//         freq[s[i]]++;
+//       }
+//     }
+//     ans++;
+
+//     return ans;
+//   }
+// };
