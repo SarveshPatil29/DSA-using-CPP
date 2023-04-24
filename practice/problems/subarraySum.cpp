@@ -2,6 +2,19 @@
 #include <vector>
 using namespace std;
 
+void subarraySum(vector<int> arr)
+{
+  long int result = 0;
+  int n = arr.size();
+
+  // computing sum of subarray using formula
+  for (int i = 0; i < n; i++)
+    result += (arr[i] * (i + 1) * (n - i));
+
+  // return all subarray sum
+  cout << result << endl;
+}
+
 int main()
 {
 
@@ -14,21 +27,7 @@ int main()
     cin >> arr[i];
   }
 
-  int ans = 0;
-
-  for (int i = 0; i < size; i++)
-  {
-    int temp = arr[i];
-    ans += temp;
-
-    for (int j = i + 1; j < size; j++)
-    {
-      temp += arr[j];
-      ans += temp;
-    }
-  }
-
-  cout << ans << endl;
+  subarraySum(arr);
 
   return 0;
 }
