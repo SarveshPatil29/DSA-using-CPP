@@ -1,5 +1,3 @@
-// https://leetcode.com/problems/delete-node-in-a-linked-list/
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -14,13 +12,7 @@ public:
   void deleteNode(ListNode *node)
   {
     ListNode *temp = node->next;
-    while (temp->next != NULL)
-    {
-      node->val = temp->val;
-      node = node->next;
-      temp = node->next;
-    }
     node->val = temp->val;
-    node->next = NULL;
+    node->next = temp->next;
   }
 };
