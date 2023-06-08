@@ -17,27 +17,15 @@ public:
   /* Should return data of middle node. If linked list is empty, then  -1*/
   int getMiddle(Node *head)
   {
-    int length = 1;
-    Node *temp = head;
+    Node *slow = head;
+    Node *fast = head;
 
-    while (temp->next != NULL)
+    while (fast != NULL && fast->next != NULL)
     {
-      length++;
-      temp = temp->next;
+      slow = slow->next;
+      fast = fast->next->next;
     }
 
-    int toFind = 0;
-
-    toFind = length / 2;
-
-    temp = head;
-
-    while (toFind > 0)
-    {
-      temp = temp->next;
-      toFind--;
-    }
-
-    return temp->data;
+    return slow->data;
   }
 };
