@@ -1,24 +1,29 @@
-// https://leetcode.com/problems/linked-list-cycle/
+// https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
 
-// /**
-//  * Definition for singly-linked list.
-//  * struct ListNode {
-//  *     int val;
-//  *     ListNode *next;
-//  *     ListNode(int x) : val(x), next(NULL) {}
-//  * };
-//  */
+// /*
+
+// struct Node
+// {
+//     int data;
+//     struct Node *next;
+//     Node(int x) {
+//         data = x;
+//         next = NULL;
+//     }
+
+// */
 // class Solution
 // {
 // public:
-//   bool hasCycle(ListNode *head)
+//   // Function to check if the linked list has a loop.
+//   bool detectLoop(Node *head)
 //   {
 //     if (head == NULL)
 //     {
 //       return false;
 //     }
 
-//     set<ListNode *> mySet;
+//     set<Node *> mySet;
 //     while (!mySet.count(head))
 //     {
 //       mySet.insert(head);
@@ -32,26 +37,31 @@
 //   }
 // };
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+/*
+
+struct Node
+{
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+
+*/
 class Solution
 {
 public:
-  bool hasCycle(ListNode *head)
+  // Function to check if the linked list has a loop.
+  bool detectLoop(Node *head)
   {
     if (head == NULL || head->next == NULL)
     {
       return false;
     }
 
-    ListNode *slow = head;
-    ListNode *fast = head;
+    Node *slow = head;
+    Node *fast = head;
 
     while (fast->next && fast->next->next)
     {
