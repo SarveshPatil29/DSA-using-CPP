@@ -1,42 +1,121 @@
 // https://leetcode.com/problems/min-stack/
 
+// class MinStack
+// {
+// public:
+//   stack<pair<int, int>> s;
+//   int currMin = INT_MAX;
+
+//   MinStack()
+//   {
+//   }
+
+//   void push(int val)
+//   {
+//     currMin = min(val, currMin);
+//     s.push({val, currMin});
+//   }
+
+//   void pop()
+//   {
+//     s.pop();
+//     if (s.empty())
+//     {
+//       currMin = INT_MAX;
+//     }
+//     else
+//     {
+//       currMin = s.top().second;
+//     }
+//   }
+
+//   int top()
+//   {
+//     return s.top().first;
+//   }
+
+//   int getMin()
+//   {
+//     return s.top().second;
+//   }
+// };
+
+// /**
+//  * Your MinStack object will be instantiated and called as such:
+//  * MinStack* obj = new MinStack();
+//  * obj->push(val);
+//  * obj->pop();
+//  * int param_3 = obj->top();
+//  * int param_4 = obj->getMin();
+//  */
+
 class MinStack
 {
 public:
-  stack<pair<int, int>> s;
-  int currMin = INT_MAX;
+  stack<long long> st;
+  long long mini;
 
   MinStack()
   {
+    mini = INT_MAX;
   }
 
-  void push(int val)
+  void push(int value)
   {
-    currMin = min(val, currMin);
-    s.push({val, currMin});
+    long long val = value;
+    if (st.empty())
+    {
+      mini = val;
+      st.push(val);
+    }
+    else
+    {
+      if (val < mini)
+      {
+        st.push(2 * val * 1LL - mini);
+        mini = val;
+      }
+      else
+      {
+        st.push(val);
+      }
+    }
   }
 
   void pop()
   {
-    s.pop();
-    if (s.empty())
+    if (st.empty())
     {
-      currMin = INT_MAX;
+      return;
     }
-    else
+
+    long long el = st.top();
+    st.pop();
+
+    if (el < mini)
     {
-      currMin = s.top().second;
+      mini = 2 * mini - el;
     }
   }
 
   int top()
   {
-    return s.top().first;
+    if (st.empty())
+    {
+      return -1;
+    }
+
+    long long el = st.top();
+    if (el < mini)
+    {
+      return mini;
+    }
+    return el;
   }
 
   int getMin()
   {
-    return s.top().second;
+    return mini;
   }
 };
 
